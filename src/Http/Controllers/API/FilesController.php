@@ -28,7 +28,7 @@ class FilesController extends ApiBaseController
         try {
             //$file = $request->file('file')->store('images', 'local');
             $file = Storage::putFile('public', $request->file('file'));
-            
+
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

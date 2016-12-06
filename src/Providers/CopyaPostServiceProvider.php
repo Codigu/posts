@@ -16,10 +16,10 @@ class CopyaPostServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $this->publishes([
             __DIR__.'/../../resources/assets/js' => base_path('resources/assets/js'),
         ], 'copya-post');
-
         $this->defineRoutes();
     }
 
@@ -40,7 +40,6 @@ class CopyaPostServiceProvider extends ServiceProvider
             });
 
             $this->mapApiRoutes();
-
         }
     }
 

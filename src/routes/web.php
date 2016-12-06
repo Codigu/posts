@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web', 'auth']], function ($router) {
             $router->get('/add', 'PostController@create')->name('posts.add');
             $router->get('{id}/edit', 'PostController@edit')->name('posts.edit');
         });
+
     });
 });
 

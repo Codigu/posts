@@ -17,4 +17,5 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['auth:api']], function ($router){
     $router->resource('posts', 'PostsController');
     $router->resource('files', 'FilesController');
+
 });
