@@ -66,5 +66,6 @@ class CopyaPostServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([CopyaPostMigration::class]);
         }
+        $this->app->register('Intervention\Image\ImageServiceProvider');
     }
 }
