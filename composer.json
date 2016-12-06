@@ -1,0 +1,23 @@
+{
+    "name": "codigu/posts",
+    "description": "Copya Post Laravel CMS built by CODIGU",
+    "keywords": ["laravel", "codigu", "cms"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arnel Basiliote",
+            "email": "arnel.basiliote@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "codigu/copya" : "dev-master"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "CopyaPost\\": "src/"
+        }
+    }
+}

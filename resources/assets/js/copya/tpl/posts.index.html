@@ -1,0 +1,78 @@
+<div class="container-fluid container-fixed-lg bg-white">
+    <!-- START PANEL -->
+    <div class="panel panel-transparent">
+        <div class="panel-heading">
+            <div class="panel-title">Posts
+            </div>
+            <div class="btn-group pull-right m-b-10">
+                <button type="button" class="btn btn-default" ng-click="addNewPost()">Add new</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="navigationsTable">
+                    <thead>
+                    <tr>
+                        <th style="width:20%">Title</th>
+                        <th style="width:20%">Excerpt</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="post in posts" ng-click="editPost(post)">
+                            <td class="v-align-middle ">
+                                <p>{{ post.title }}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p><img src="/{{ post.featured_image }}"  /></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END PANEL -->
+</div>
+
+<div class="modal fade slide-up disable-scroll" id="modalSlideUp" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                    </button>
+                    <h5><span class="semi-bold">Category</span></h5>
+                </div>
+                <div class="modal-body">
+                    <form id="form-navigation" class="form-horizontal" ng-submit="submitCategoryForm(category_.$valid)" role="form" autocomplete="off" name="category_" novalidate>
+                        <div class="form-group-attached">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Category Name" name="name" ng-class="{'error': category_.name.$invalid && !category_.name.$pristine}" ng-model="category.name" required>
+                                        <label class="error" for="name" ng-show="category_.name.$invalid && !category_.name.$pristine">This field is required.</label>
+                                    </div>
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" id="description" placeholder="Description" name="description" ng-class="{'error': category_.name.$invalid && !category_.name.$pristine}" ng-model="category.description" required>
+                                        <label class="error" for="name" ng-show="category_.name.$invalid && !category_.name.$pristine">This field is required.</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                            <div class="col-sm-4 m-t-10 sm-m-t-10">
+                                <button type="submit" class="btn btn-primary btn-block m-t-5">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
