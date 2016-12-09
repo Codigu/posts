@@ -15,12 +15,9 @@ use Illuminate\Support\Facades\Config;
 
 /* admin pages */
 
-
-
 Route::group(['middleware' => 'copya.menu'], function(){
     Route::get('post/{slug}', 'FrontEnd\PostsController@show');
 });
-
 
 Route::group(['middleware' => ['web', 'auth']], function ($router) {
     $router->group(['prefix' => Config::get('copya.admin_path'), 'namespace' => 'Admin',], function($router){

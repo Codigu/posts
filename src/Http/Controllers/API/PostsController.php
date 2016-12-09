@@ -74,6 +74,7 @@ class PostsController extends ApiBaseController
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
+
         return $this->item($post, new PostTransformer);
     }
 
@@ -83,14 +84,15 @@ class PostsController extends ApiBaseController
             $post = Post::withTrashed()->find($id);
             if($post->trashed()){
                 $post->forceDelete();
+                return response()->json(['deleted' => true]);
             } else {
                 Post::destroy($id);
+                return $this->item($post, new PostTransformer);
             }
-
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
-        return $this->item($post, new PostTransformer);
+
     }
 }

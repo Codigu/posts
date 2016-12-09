@@ -159,7 +159,6 @@ function PostCtrl($scope, $sce, $rootScope, $state, $stateParams, postService, $
 PostCtrl.$inject = ['$scope', '$sce', '$rootScope', '$state', '$stateParams', 'postService', '$timeout'];
 
 angular.module('copya', ['ui.tree', 'thatisuday.dropzone'])
-    // Chart controller 
     .controller('PostCtrl', PostCtrl);
 
 
