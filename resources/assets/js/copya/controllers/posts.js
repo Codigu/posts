@@ -54,8 +54,12 @@ function PostCtrl($scope, $sce, $rootScope, $state, $stateParams, postService, $
         });
 
     } else if($state.is('posts.add')){
-        console.log('post add');
-        $scope.myDz = $scope.dzMethods.getDropzone();
+
+        $timeout(function () {
+            console.log('post add 2');
+            // get dropzone instance to emit some events
+            //$scope.myDz = $scope.dzMethods.getDropzone();
+        });
     }
 
     $scope.submitPostForm = function(isValid) {

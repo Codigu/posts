@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\View;
 class PostShortcode {
     public function register($shortcode, $content, $compiler, $name)
     {
-        $max = ($shortcode->attributes['max']) ?: 0;
-        $sort = ($shortcode->attributes['sort']) ?: 'latest';
-        $view = $shortcode->attributes['view'];
+
+        $max = ($shortcode->max) ?: 0;
+        $sort = ($shortcode->sort) ?: 'latest';
+        $view = $shortcode->view;
 
         switch($sort){
             case 'latest':
@@ -24,9 +25,10 @@ class PostShortcode {
             $posts->take($max);
         }
         $posts = $posts->get();
-        
+
         //check if view with the shortcode name param exists. else, fallbacks to default post widget view file
         if(View::exists('vendor.copya.front.widgets.'.$view)){
+
             return view('vendor.copya.front.widgets.'.$view, ['posts' => $posts]);
         } else {
             return view('vendor.copya.front.widgets.posts', ['posts' => $posts]);
