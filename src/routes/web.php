@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Config;
 
 Route::group(['middleware' => 'copya.menu'], function(){
     Route::get('post/{slug}', 'FrontEnd\PostsController@show');
+    Route::resource('categories/{category}/posts', 'FrontEnd\Categories\PostsController');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function ($router) {
