@@ -20,6 +20,9 @@
     "autoload": {
         "psr-4": {
             "CopyaPost\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/post_helpers.php"
+        ]
     }
 }
