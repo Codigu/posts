@@ -19,7 +19,9 @@ class PostsController extends BaseController
         if (!$post || $post->published_at == null) {
             return abort(404);
         }
+        $prev = prev_post($post->id);
+        $next = next_post($post->id);
 
-        return view('vendor.copya.front.posts.show', array('post' => $post));
+        return view('vendor.copya.front.posts.show', array('post' => $post, 'prev' => $prev, 'next' => $next));
     }
 }

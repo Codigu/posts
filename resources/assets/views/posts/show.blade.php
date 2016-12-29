@@ -9,5 +9,16 @@
             {!!  $post->content  !!}
         </div>
     </div>
-
+    @if($prev)
+    <div class="prev-post">
+        <h5>Previous</h5>
+        <a href="{{ url('post/'.$prev->slug) }}">{{ $prev->title }}</a>
+    </div>
+    @endif
+    @if($next)
+    <div class="next-post">
+        <h5>Next</h5>
+        <a href="{{ url('post/'.$next->slug) }}">{{ $next->title }}</a>
+    </div>
+    @endif
 @endsection
