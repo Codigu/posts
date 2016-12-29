@@ -10,7 +10,9 @@ class PostsController extends BaseController
 {
     public function index()
     {
+        $posts = Post::all();
 
+        return view('vendor.copya.front.posts.index', array('posts' => $posts));
     }
 
     public function show($slug)

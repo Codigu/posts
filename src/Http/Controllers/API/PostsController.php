@@ -8,13 +8,25 @@ use Copya\Http\Controllers\API\ApiBaseController;
 use CopyaPost\Eloquent\Post;
 use CopyaPost\Http\Requests\PostRequest;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 
 class PostsController extends ApiBaseController
 {
-    public function index()
+    public function __construct()
     {
-        return $this->collection(Post::withTrashed()->get(), new PostTransformer);
+        $this->middleware('auth')->except('index');
+    }
+
+    public function index(Request $request)
+    {
+        if($request->has('paginated')){
+            $paginator = Post::paginate();
+            $posts = $paginator->getCollection();
+            return $this->collection($posts, new PostTransformer);
+        } else {
+            return $this->collection(Post::withTrashed()->get(), new PostTransformer);
+        }
     }
 
     public function show($id)

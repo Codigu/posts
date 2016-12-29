@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Config;
 |
 */
 
-/* admin pages */
 
-Route::group(['middleware' => 'copya.menu'], function(){
-    Route::get('post/{slug}', 'FrontEnd\PostsController@show');
+Route::group(['middleware' => 'copya.menu'], function() {
+    $post_path = config('copya.post_path') ?: 'posts';
+    Route::resource($post_path, 'FrontEnd\PostsController');
     Route::resource('categories/{category}/posts', 'FrontEnd\Categories\PostsController');
 });
 
