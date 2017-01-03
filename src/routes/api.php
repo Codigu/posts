@@ -17,5 +17,5 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['api']], function ($router){
     $router->resource('posts', 'PostsController');
     $router->resource('files', 'FilesController');
-
+    $router->resource('categories/{category}/posts', 'Categories\PostsController');
 });
