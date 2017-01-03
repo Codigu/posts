@@ -24,6 +24,6 @@ class PostsController extends BaseController
         $prev = prev_post($post->id);
         $next = next_post($post->id);
 
-        return view('vendor.copya.front.posts.show', array('post' => $post, 'prev' => $prev, 'next' => $next));
+        return view('vendor.copya.front.posts.show', array('post' => $post, 'prev' => $prev, 'next' => $next))->withShortcodes();
     }
 }
