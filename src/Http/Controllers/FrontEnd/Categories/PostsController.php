@@ -13,7 +13,7 @@ class PostsController extends BaseController
         $category = PostCategory::findBySlug($category_slug);
         $category = $category->load('posts');
 
-        return view('vendor.copya.front.posts.categories', ['category' => $category]);
+        return view('vendor.copya.front.posts.categories', ['category' => $category])->withShortcodes();
 
     }
 

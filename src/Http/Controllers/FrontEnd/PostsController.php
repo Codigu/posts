@@ -12,7 +12,7 @@ class PostsController extends BaseController
     {
         $posts = Post::all();
 
-        return view('vendor.copya.front.posts.index', array('posts' => $posts));
+        return view('vendor.copya.front.posts.index', array('posts' => $posts))->withShortcodes();
     }
 
     public function show($slug)
