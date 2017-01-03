@@ -21,8 +21,8 @@ class PostsController extends ApiBaseController
     public function index(Request $request)
     {
         if($request->has('paginated')){
-            $paginator = Post::paginate();
-            $posts = $paginator->getCollection();
+
+            $posts = Post::withTrashed()->paginate();
             return $this->collection($posts, new PostTransformer);
         } else {
             return $this->collection(Post::withTrashed()->get(), new PostTransformer);
